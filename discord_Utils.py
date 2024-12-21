@@ -7,8 +7,6 @@ def send_discord_notification(message):
 
     payload = {"content": message}  # The message content
     response = requests.post(hook, json=payload)
-    if response.status_code == 204:
-        print("Notification sent successfully!")
-    else:
+    if response.status_code != 204:
         print(f"Failed to send notification: {response.status_code} - {response.text}")
 
